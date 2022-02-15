@@ -19,4 +19,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// *--- Area Priovata ---*
+
 Route::get('/home', 'HomeController@index')->name('home');
