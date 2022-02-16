@@ -33,7 +33,13 @@
                                     <td>{{$post->published ? "✅" : "❌"}}</td>
                                     <td><a href="{{route("posts.show", $post->id)}}"><button type="button" class="btn btn-outline-dark">Show</button></a></td>
                                     <td>Update</td>
-                                    <td>Delete</td>
+                                    <td>
+                                        <form action="{{route("posts.destroy", $post->id)}}" method="POST" >
+                                            @csrf
+                                            @method("DELETE")
+                                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
