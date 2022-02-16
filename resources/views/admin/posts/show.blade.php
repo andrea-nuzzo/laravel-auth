@@ -17,6 +17,9 @@
                         <span class="badge badge-danger">Bozza</span>
                     @endif
                 </div>
+                <div class="d-flex justify-content-center">
+                    <a href="{{route("posts.index")}}"><button type="button" class="btn btn-outline-dark mt-4">Return to Dashboard</button></a>
+                </div>
             </div>
         </div>
     </div>
