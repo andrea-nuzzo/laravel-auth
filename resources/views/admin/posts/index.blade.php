@@ -32,7 +32,7 @@
                                     <td>{{$post->slug}}</td>
                                     <td>{{$post->published ? "✅" : "❌"}}</td>
                                     <td><a href="{{route("posts.show", $post->id)}}"><button type="button" class="btn btn-outline-dark">Show</button></a></td>
-                                    <td>Update</td>
+                                    <td><a href="{{route("posts.edit", $post->id)}}"><button type="button" class="btn btn-outline-warning">Update</button></a></td>
                                     <td>
                                         <form action="{{route("posts.destroy", $post->id)}}" method="POST" >
                                             @csrf
