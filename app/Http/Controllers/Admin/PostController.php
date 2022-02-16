@@ -4,10 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Post;
 
 class PostController extends Controller
 {
+    protected $validation = [
+        "title"=>"required|string|max:100",
+        "content"=>"required",
+        "puplished"=>"sometimes|accepted",
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +45,30 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $request->validate($this->validation);
+
+        // $newPost = Post::create($data);
+
+        $newPost = new Post();
+        $newPost->title = $data["title"];
+        $newPost->content = $data["content"];
+        $newPost->published = isset($data["published"]);
+        
+        //SLUG
+        $slug = Str::of($newPost->title)->slug("-");
+        $count = 1;
+
+        while(Post::where("slug", $slug)->first() ){
+            $slug = Str::of($newPost->title)->slug("-") . "-{$count}";
+            $count ++;
+        }
+        $newPost->slug = $slug;
+
+        $newPost->save();
+        
+        return redirect()->route('posts.show', $newPost->id);
     }
 
     /**

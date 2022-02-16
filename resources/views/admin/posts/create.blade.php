@@ -20,7 +20,7 @@
                                 <textarea type="text" class="form-control" name="content" id="content" placeholder="Add text" rows="8"></textarea>
                             </div>
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="published">
+                                <input type="checkbox" class="form-check-input" name="published" id="published">
                                 <label class="form-check-label" for="published">Published</label>
                             </div>
 
