@@ -13,15 +13,24 @@
                             @csrf
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" class="form-control" name="title" id="title" placeholder="Add title" >
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" placeholder="Add title" >
+                                @error('title')
+                                 <div class="alert alert-danger my-2"> {{$message}}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="content">Content</label>
-                                <textarea type="text" class="form-control" name="content" id="content" placeholder="Add text" rows="8"></textarea>
+                                <textarea type="text" class="form-control @error('content') is-invalid @enderror" name="content" id="content" placeholder="Add text" rows="8"></textarea>
+                                @error('content')
+                                 <div class="alert alert-danger my-2"> {{$message}}</div>
+                                @enderror
                             </div>
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" name="published" id="published">
+                                <input type="checkbox" class="form-check-input @error('published') is-invalid @enderror" name="published" id="published">
                                 <label class="form-check-label" for="published">Published</label>
+                                @error('published')
+                                 <div class="alert alert-danger my-2"> {{$message}}</div>
+                                @enderror
                             </div>
 
                             <button type="submit" class="btn btn-outline-dark">Crea</button>
